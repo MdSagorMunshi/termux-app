@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.termux.R;
 import com.termux.shared.termux.shell.command.runner.terminal.TermuxSession;
+import com.termux.shared.theme.ThemeUtils;
 import com.termux.terminal.TerminalSession;
 
 import java.util.List;
@@ -74,8 +75,10 @@ public class ModernSessionAdapter extends RecyclerView.Adapter<ModernSessionAdap
 
         // Highlight selected
         if (position == mSelectedPosition) {
-            holder.cardView.setStrokeColor(holder.cardView.getContext().getColor(R.color.colorPrimary));
-            holder.cardView.setCardBackgroundColor(holder.cardView.getContext().getColor(R.color.colorPrimaryContainer));
+            int primaryColor = ThemeUtils.getSystemAttrColor(holder.cardView.getContext(), com.google.android.material.R.attr.colorPrimary);
+            int primaryContainerColor = ThemeUtils.getSystemAttrColor(holder.cardView.getContext(), com.google.android.material.R.attr.colorPrimaryContainer);
+            holder.cardView.setStrokeColor(primaryColor);
+            holder.cardView.setCardBackgroundColor(primaryContainerColor);
         } else {
             holder.cardView.setStrokeColor(Color.TRANSPARENT);
             holder.cardView.setCardBackgroundColor(Color.TRANSPARENT);

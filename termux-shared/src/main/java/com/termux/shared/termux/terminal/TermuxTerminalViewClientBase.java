@@ -90,6 +90,11 @@ public class TermuxTerminalViewClientBase implements TerminalViewClient {
     }
 
     @Override
+    public String getSuggestion() {
+        return null;
+    }
+
+    @Override
     public void logError(String tag, String message) {
         Logger.logError(tag, message);
     }

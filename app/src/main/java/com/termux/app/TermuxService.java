@@ -885,6 +885,10 @@ public final class TermuxService extends Service implements AppShell.AppShellCli
         return mShellManager.mTermuxSessions;
     }
 
+    public TermuxShellManager getShellManager() {
+        return mShellManager;
+    }
+
     @Nullable
     public synchronized TermuxSession getTermuxSession(int index) {
         if (index >= 0 && index < mShellManager.mTermuxSessions.size())
