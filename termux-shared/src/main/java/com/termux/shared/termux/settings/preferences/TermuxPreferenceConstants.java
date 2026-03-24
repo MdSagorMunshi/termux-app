@@ -99,8 +99,12 @@ public final class TermuxPreferenceConstants {
         /**
          * Defines the key for whether to show terminal toolbar containing extra keys and text input field.
          */
-        public static final String KEY_SHOW_TERMINAL_TOOLBAR = "show_extra_keys";
+        public static final String KEY_SHOW_TERMINAL_TOOLBAR = "show_terminal_toolbar";
         public static final boolean DEFAULT_VALUE_SHOW_TERMINAL_TOOLBAR = true;
+
+        public static final String KEY_IS_FIRST_RUN = "is_first_run";
+        public static final boolean DEFAULT_VALUE_KEY_IS_FIRST_RUN = true;
+
 
 
         /**

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- AMOLED Theme -->
+    <style name="Theme.Termux.AMOLED" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/black</item>
+        <item name="colorSurface">@color/black</item>
+        <item name="colorSurfaceVariant">#121212</item>
+        <item name="colorPrimary">#BB86FC</item>
+        <item name="colorSecondary">#03DAC6</item>
+    </style>
+
+    <!-- Neon Theme -->
+    <style name="Theme.Termux.Neon" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">#000000</item>
+        <item name="colorPrimary">#39FF14</item> <!-- Neon Green -->
+        <item name="colorSecondary">#FF00FF</item> <!-- Neon Magenta -->
+        <item name="colorTertiary">#00FFFF</item> <!-- Neon Cyan -->
+        <item name="colorSurface">#0A0A0A</item>
+        <item name="android:textColorPrimary">#39FF14</item>
+    </style>
+
+    <!-- Hacker Theme -->
+    <style name="Theme.Termux.Hacker" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">#000000</item>
+        <item name="colorPrimary">#00FF00</item>
+        <item name="colorSurface">#000000</item>
+        <item name="colorOnSurface">#00FF00</item>
+        <item name="android:textColorPrimary">#00FF00</item>
+        <item name="android:textColorSecondary">#008800</item>
+    </style>
+
+</resources>

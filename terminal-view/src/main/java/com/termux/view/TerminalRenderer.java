@@ -55,7 +55,8 @@ public final class TerminalRenderer {
 
     /** Render the terminal to a canvas with at a specified row scroll, and an optional rectangular selection. */
     public final void render(TerminalEmulator mEmulator, Canvas canvas, int topRow,
-                             int selectionY1, int selectionY2, int selectionX1, int selectionX2) {
+                             int selectionY1, int selectionY2, int selectionX1, int selectionX2,
+                             String suggestion) {
         final boolean reverseVideo = mEmulator.isReverseVideo();
         final int endRow = topRow + mEmulator.mRows;
         final int columns = mEmulator.mColumns;
@@ -151,10 +152,23 @@ public final class TerminalRenderer {
             if (lastRunInsideCursor && cursorShape == TerminalEmulator.TERMINAL_CURSOR_STYLE_BLOCK) {
                 invertCursorTextColor = true;
             }
-            drawTextRun(canvas, line, palette, heightOffset, lastRunStartColumn, columnWidthSinceLastRun, lastRunStartIndex, charsSinceLastRun,
-                measuredWidthForRun, cursorColor, cursorShape, lastRunStyle, reverseVideo || invertCursorTextColor || lastRunInsideSelection);
+            drawTextRun(canvas, line, palette, heightOffset, lastRunStartColumn, columnWidthSinceLastRun,
+                lastRunStartIndex, charsSinceLastRun, measuredWidthForRun,
+                cursorColor, cursorShape, lastRunStyle, reverseVideo || invertCursorTextColor || lastRunInsideSelection);
+        }
+
+        if (suggestion != null && !suggestion.isEmpty() && cursorVisible) {
+            // Draw ghost text suggestion at cursor position
+            float x = cursorCol * mFontWidth;
+            float y = (cursorRow - topRow + 1) * mFontLineSpacing + mFontAscent;
+            int originalColor = mTextPaint.getColor();
+            int ghostColor = (palette[TextStyle.COLOR_INDEX_FOREGROUND] & 0x00FFFFFF) | 0x66000000; // 40% alpha
+            mTextPaint.setColor(ghostColor);
+            canvas.drawText(suggestion, x, y, mTextPaint);
+            mTextPaint.setColor(originalColor);
         }
     }
+
 
     private void drawTextRun(Canvas canvas, char[] text, int[] palette, float y, int startColumn, int runWidthColumns,
                              int startCharIndex, int runWidthChars, float mes, int cursor, int cursorStyle,

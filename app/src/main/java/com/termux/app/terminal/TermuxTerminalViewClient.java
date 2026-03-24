@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.termux.R;
 import com.termux.app.TermuxActivity;
+import com.termux.app.fragments.CommandPaletteFragment;
 import com.termux.shared.file.FileUtils;
 import com.termux.shared.interact.MessageDialogUtils;
 import com.termux.shared.interact.ShareUtils;
@@ -40,6 +41,7 @@ import com.termux.shared.termux.TermuxUtils;
 import com.termux.shared.termux.data.TermuxUrlUtils;
 import com.termux.shared.view.KeyboardUtils;
 import com.termux.shared.view.ViewUtils;
+import com.termux.app.terminal.suggestions.CommandSuggestionManager;
 import com.termux.terminal.KeyHandler;
 import com.termux.terminal.TerminalEmulator;
 import com.termux.terminal.TerminalSession;
@@ -168,6 +170,11 @@ public class TermuxTerminalViewClient extends TermuxTerminalViewClientBase {
         }
     }
 
+    @Override
+    public String getSuggestion() {
+        return CommandSuggestionManager.getInstance().getCurrentSuggestion();
+    }
+
 
 
     @Override
@@ -240,6 +247,11 @@ public class TermuxTerminalViewClient extends TermuxTerminalViewClientBase {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent e, TerminalSession currentSession) {
         if (handleVirtualKeys(keyCode, e, true)) return true;
+
+        if (e.isCtrlPressed() && keyCode == KeyEvent.KEYCODE_P) {
+            new CommandPaletteFragment().show(mActivity.getSupportFragmentManager(), "command_palette");
+            return true;
+        }
 
         if (keyCode == KeyEvent.KEYCODE_ENTER && !currentSession.isRunning()) {
             mTermuxTerminalSessionActivityClient.removeFinishedSession(currentSession);
@@ -359,6 +371,14 @@ public class TermuxTerminalViewClient extends TermuxTerminalViewClientBase {
 
     @Override
     public boolean onCodePoint(final int codePoint, boolean ctrlDown, TerminalSession session) {
+        if (codePoint == 9 && !ctrlDown && !mVirtualFnKeyDown && !mVirtualControlKeyDown) { // TAB
+            String suggestion = CommandSuggestionManager.getInstance().getCurrentSuggestion();
+            if (suggestion != null) {
+                session.write(suggestion);
+                return true;
+            }
+        }
+
         if (mVirtualFnKeyDown) {
             int resultingKeyCode = -1;
             int resultingCodePoint = -1;

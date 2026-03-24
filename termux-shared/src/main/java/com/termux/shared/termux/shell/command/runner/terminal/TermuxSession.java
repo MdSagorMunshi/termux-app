@@ -36,6 +36,9 @@ public class TermuxSession {
     private final TermuxSessionClient mTermuxSessionClient;
     private final boolean mSetStdoutOnExit;
 
+    private String mWorkspaceId = "Default";
+    private boolean mIsPinned = false;
+
     private static final String LOG_TAG = "TermuxSession";
 
     private TermuxSession(@NonNull final TerminalSession terminalSession, @NonNull final ExecutionCommand executionCommand,
@@ -274,6 +277,22 @@ public class TermuxSession {
 
     public TerminalSession getTerminalSession() {
         return mTerminalSession;
+    }
+
+    public String getWorkspaceId() {
+        return mWorkspaceId;
+    }
+
+    public void setWorkspaceId(String workspaceId) {
+        this.mWorkspaceId = workspaceId;
+    }
+
+    public boolean isPinned() {
+        return mIsPinned;
+    }
+
+    public void setPinned(boolean pinned) {
+        mIsPinned = pinned;
     }
 
     public ExecutionCommand getExecutionCommand() {

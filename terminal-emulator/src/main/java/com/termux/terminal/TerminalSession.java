@@ -173,10 +173,25 @@ public final class TerminalSession extends TerminalOutput {
 
     }
 
+    public interface DataSentListener {
+        void onDataSent(byte[] data, int offset, int count);
+    }
+
+    private DataSentListener mDataSentListener;
+
+    public void setDataSentListener(DataSentListener listener) {
+        mDataSentListener = listener;
+    }
+
     /** Write data to the shell process. */
     @Override
     public void write(byte[] data, int offset, int count) {
-        if (mShellPid > 0) mTerminalToProcessIOQueue.write(data, offset, count);
+        if (mShellPid > 0) {
+            mTerminalToProcessIOQueue.write(data, offset, count);
+            if (mDataSentListener != null) {
+                mDataSentListener.onDataSent(data, offset, count);
+            }
+        }
     }
 
     /** Write the Unicode code point to the terminal encoded in UTF-8. */

@@ -33,6 +33,18 @@
                 android:scrollbars="vertical"
                 tools:ignore="UnusedAttribute" />
 
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/new_session_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="16dp"
+                android:text="New Session"
+                app:icon="@drawable/ic_new_session"
+                app:backgroundTint="?attr/colorPrimary"
+                app:iconTint="?attr/colorOnPrimary"
+                android:textColor="?attr/colorOnPrimary" />
+
             <LinearLayout
                 android:id="@+id/left_drawer"
                 android:layout_width="240dp"
@@ -59,14 +71,35 @@
                         app:tint="?attr/termuxActivityDrawerImageTint" />
                 </LinearLayout>
 
-                <ListView
-                    android:id="@+id/terminal_sessions_list"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/session_search_layout"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:hintEnabled="false"
+                    app:startIconDrawable="@android:drawable/ic_menu_search"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/session_search_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Search sessions..."
+                        android:padding="8dp"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/terminal_sessions_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_gravity="top"
                     android:layout_weight="1"
-                    android:choiceMode="singleChoice"
-                    android:longClickable="true" />
+                    android:clipToPadding="false"
+                    android:padding="8dp" />
 
                 <LinearLayout
                     style="?android:attr/buttonBarStyle"

@@ -65,6 +65,9 @@ public interface TerminalViewClient {
 
     void onEmulatorSet();
 
+    /** Get the current command suggestion to draw as ghost text. */
+    String getSuggestion();
+
 
     void logError(String tag, String message);
 

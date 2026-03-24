@@ -45,6 +45,7 @@ import com.termux.shared.data.DataUtils;
 import com.termux.shared.shell.command.ExecutionCommand;
 import com.termux.shared.shell.command.ExecutionCommand.Runner;
 import com.termux.shared.shell.command.ExecutionCommand.ShellCreateMode;
+import com.termux.app.terminal.suggestions.CommandSuggestionManager;
 import com.termux.terminal.TerminalEmulator;
 import com.termux.terminal.TerminalSession;
 import com.termux.terminal.TerminalSessionClient;
@@ -604,6 +605,8 @@ public final class TermuxService extends Service implements AppShell.AppShellCli
             }
             return null;
         }
+
+        newTermuxSession.getTerminalSession().setDataSentListener(CommandSuggestionManager.getInstance()::onDataSent);
 
         mShellManager.mTermuxSessions.add(newTermuxSession);
 

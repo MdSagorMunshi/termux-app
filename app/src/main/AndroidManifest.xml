@@ -89,12 +89,27 @@
         </activity-alias>
 
         <activity
+            android:name=".app.activities.OnboardingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.DayNight.NoActionBar" />
+
+        <activity
             android:name=".app.activities.HelpActivity"
             android:exported="false"
             android:label="@string/application_name"
             android:parentActivityName=".app.TermuxActivity"
             android:resizeableActivity="true"
             tools:targetApi="n" />
+
+        <activity
+            android:name=".app.activities.PluginHubActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.DayNight.NoActionBar" />
+
+        <activity
+            android:name=".app.activities.ExtraKeysEditorActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Material3.DayNight.NoActionBar" />
 
         <activity
             android:name=".app.activities.SettingsActivity"

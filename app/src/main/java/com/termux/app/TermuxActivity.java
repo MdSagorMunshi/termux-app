@@ -20,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -40,10 +42,13 @@ import com.termux.shared.data.DataUtils;
 import com.termux.shared.termux.TermuxConstants;
 import com.termux.shared.termux.TermuxConstants.TERMUX_APP.TERMUX_ACTIVITY;
 import com.termux.app.activities.HelpActivity;
+import com.termux.app.activities.OnboardingActivity;
 import com.termux.app.activities.SettingsActivity;
 import com.termux.shared.termux.crash.TermuxCrashUtils;
 import com.termux.shared.termux.settings.preferences.TermuxAppSharedPreferences;
 import com.termux.app.terminal.TermuxSessionsListViewController;
+import com.termux.app.terminal.session.ModernSessionAdapter;
+import com.termux.app.terminal.session.SessionManager;
 import com.termux.app.terminal.io.TerminalToolbarViewPager;
 import com.termux.app.terminal.TermuxTerminalViewClient;
 import com.termux.shared.termux.extrakeys.ExtraKeysView;
@@ -63,6 +68,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.Arrays;
@@ -137,6 +144,12 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
      * The termux sessions list controller.
      */
     TermuxSessionsListViewController mTermuxSessionListViewController;
+
+    /**
+     * The new session manager and modern adapter.
+     */
+    SessionManager mSessionManager;
+    ModernSessionAdapter mModernSessionAdapter;
 
     /**
      * The {@link TermuxActivity} broadcast receiver for various things like terminal style configuration changes.
@@ -221,6 +234,12 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         if (mPreferences == null) {
             // An AlertDialog should have shown to kill the app, so we don't continue running activity code
             mIsInvalidState = true;
+            return;
+        }
+
+        if (mPreferences.isFirstRun()) {
+            startActivity(new Intent(this, OnboardingActivity.class));
+            finish();
             return;
         }
 
@@ -498,11 +517,41 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
     }
 
     private void setTermuxSessionsListView() {
-        ListView termuxSessionsListView = findViewById(R.id.terminal_sessions_list);
+        RecyclerView recyclerView = findViewById(R.id.terminal_sessions_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mSessionManager = new SessionManager(mTermuxService.getShellManager());
+        mModernSessionAdapter = new ModernSessionAdapter(mSessionManager, new ModernSessionAdapter.OnSessionClickListener() {
+            @Override
+            public void onSessionClick(com.termux.shared.termux.shell.command.runner.terminal.TermuxSession session) {
+                getTermuxTerminalSessionClient().setCurrentSession(session.getTerminalSession());
+                getDrawer().closeDrawers();
+            }
+
+            @Override
+            public void onSessionLongClick(com.termux.shared.termux.shell.command.runner.terminal.TermuxSession session) {
+                getTermuxTerminalSessionClient().renameSession(session.getTerminalSession());
+            }
+        });
+        recyclerView.setAdapter(mModernSessionAdapter);
+
+        EditText searchInput = findViewById(R.id.session_search_input);
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mSessionManager.setFilter(s.toString());
+                mModernSessionAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        // Keep the old controller for now to avoid breaking other parts, but it won't be used for display
         mTermuxSessionListViewController = new TermuxSessionsListViewController(this, mTermuxService.getTermuxSessions());
-        termuxSessionsListView.setAdapter(mTermuxSessionListViewController);
-        termuxSessionsListView.setOnItemClickListener(mTermuxSessionListViewController);
-        termuxSessionsListView.setOnItemLongClickListener(mTermuxSessionListViewController);
     }
 
 
@@ -580,6 +629,27 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
                 -1, null, null);
             return true;
         });
+
+        View newSessionFab = findViewById(R.id.new_session_fab);
+        if (newSessionFab != null) {
+            newSessionFab.setScaleX(0f);
+            newSessionFab.setScaleY(0f);
+            newSessionFab.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setDuration(400)
+                    .setInterpolator(new android.view.animation.OvershootInterpolator())
+                    .setStartDelay(500)
+                    .start();
+            newSessionFab.setOnClickListener(v -> mTermuxTerminalSessionActivityClient.addNewSession(false, null));
+            newSessionFab.setOnLongClickListener(v -> {
+                TextInputDialogUtils.textInput(TermuxActivity.this, R.string.title_create_named_session, null,
+                    R.string.action_create_named_session_confirm, text -> mTermuxTerminalSessionActivityClient.addNewSession(false, text),
+                    R.string.action_new_session_failsafe, text -> mTermuxTerminalSessionActivityClient.addNewSession(true, text),
+                    -1, null, null);
+                return true;
+            });
+        }
     }
 
     private void setToggleKeyboardView() {
@@ -857,6 +927,9 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
 
     public void termuxSessionListNotifyUpdated() {
         mTermuxSessionListViewController.notifyDataSetChanged();
+        if (mModernSessionAdapter != null) {
+            mModernSessionAdapter.notifyDataSetChanged();
+        }
     }
 
     public boolean isVisible() {

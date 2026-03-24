@@ -120,6 +120,14 @@ public class TermuxAppSharedPreferences extends AppSharedPreferences {
         SharedPreferenceUtils.setBoolean(mSharedPreferences, TERMUX_APP.KEY_KEEP_SCREEN_ON, value, false);
     }
 
+    public boolean isFirstRun() {
+        return SharedPreferenceUtils.getBoolean(mSharedPreferences, TERMUX_APP.KEY_IS_FIRST_RUN, TERMUX_APP.DEFAULT_VALUE_KEY_IS_FIRST_RUN);
+    }
+
+    public void setFirstRun(boolean value) {
+        SharedPreferenceUtils.setBoolean(mSharedPreferences, TERMUX_APP.KEY_IS_FIRST_RUN, value, false);
+    }
+
 
 
     public static int[] getDefaultFontSizes(Context context) {

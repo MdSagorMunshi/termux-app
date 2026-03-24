@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/onboarding_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/onboarding_bottom_bar" />
+
+    <RelativeLayout
+        android:id="@+id/onboarding_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:paddingHorizontal="24dp">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/onboarding_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            app:tabBackground="@drawable/session_ripple"
+            app:tabIndicatorHeight="0dp"
+            app:tabRippleColor="@null" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/onboarding_next_button"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="Next" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/onboarding_skip_button"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/onboarding_next_button"
+            android:layout_marginEnd="16dp"
+            android:text="Skip" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
