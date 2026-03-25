@@ -158,13 +158,25 @@ public final class TerminalRenderer {
         }
 
         if (suggestion != null && !suggestion.isEmpty() && cursorVisible) {
-            // Draw ghost text suggestion at cursor position
-            float x = cursorCol * mFontWidth;
-            float y = (cursorRow - topRow + 1) * mFontLineSpacing + mFontAscent;
+            // Text baseline matching the main rendering: heightOffset - mFontLineSpacingAndAscent
+            // where heightOffset = mFontLineSpacingAndAscent + (row - topRow + 1) * mFontLineSpacing
+            float textBaseline = (cursorRow - topRow + 1) * mFontLineSpacing;
+            float cursorX = cursorCol * mFontWidth;
             int originalColor = mTextPaint.getColor();
+
+            // Dim the block cursor so the first suggestion character is visible through it
+            if (cursorShape == TerminalEmulator.TERMINAL_CURSOR_STYLE_BLOCK) {
+                float cellBottom = textBaseline + mFontLineSpacingAndAscent;
+                float cellTop = cellBottom - mFontLineSpacing;
+                int bgColor = palette[TextStyle.COLOR_INDEX_BACKGROUND];
+                mTextPaint.setColor((bgColor & 0x00FFFFFF) | 0xA0000000);
+                canvas.drawRect(cursorX, cellTop, cursorX + mFontWidth, cellBottom, mTextPaint);
+            }
+
+            // Draw ghost text suggestion at cursor position
             int ghostColor = (palette[TextStyle.COLOR_INDEX_FOREGROUND] & 0x00FFFFFF) | 0x66000000; // 40% alpha
             mTextPaint.setColor(ghostColor);
-            canvas.drawText(suggestion + " (\u2192 to accept)", x, y, mTextPaint);
+            canvas.drawText(suggestion + " (\u2192 to accept)", cursorX, textBaseline, mTextPaint);
             mTextPaint.setColor(originalColor);
         }
     }
