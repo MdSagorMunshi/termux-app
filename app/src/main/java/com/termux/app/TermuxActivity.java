@@ -222,9 +222,9 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         mProperties = TermuxAppSharedProperties.getProperties();
         reloadProperties();
 
-        setActivityTheme();
-
         super.onCreate(savedInstanceState);
+
+        setActivityTheme();
 
         setContentView(R.layout.activity_termux);
 
@@ -237,10 +237,14 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
             return;
         }
 
-        if (mPreferences.isFirstRun()) {
-            startActivity(new Intent(this, OnboardingActivity.class));
-            finish();
-            return;
+        try {
+            if (mPreferences.isFirstRun()) {
+                startActivity(new Intent(this, OnboardingActivity.class));
+                finish();
+                return;
+            }
+        } catch (Exception e) {
+            Logger.logStackTraceWithMessage(LOG_TAG, "Failed to launch onboarding", e);
         }
 
         setMargins();

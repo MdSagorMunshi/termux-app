@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:background="@android:color/transparent"
-            app:tabBackground="@drawable/session_ripple"
             app:tabIndicatorHeight="0dp"
             app:tabRippleColor="@null" />
 
