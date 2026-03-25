@@ -246,6 +246,14 @@ public class TermuxTerminalViewClient extends TermuxTerminalViewClientBase {
     @SuppressLint("RtlHardcoded")
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent e, TerminalSession currentSession) {
+        if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+            String suggestion = CommandSuggestionManager.getInstance().getCurrentSuggestion();
+            if (suggestion != null) {
+                currentSession.write(suggestion);
+                return true;
+            }
+        }
+
         if (handleVirtualKeys(keyCode, e, true)) return true;
 
         if (e.isCtrlPressed() && keyCode == KeyEvent.KEYCODE_P) {
@@ -371,14 +379,6 @@ public class TermuxTerminalViewClient extends TermuxTerminalViewClientBase {
 
     @Override
     public boolean onCodePoint(final int codePoint, boolean ctrlDown, TerminalSession session) {
-        if (codePoint == 9 && !ctrlDown && !mVirtualFnKeyDown && !mVirtualControlKeyDown) { // TAB
-            String suggestion = CommandSuggestionManager.getInstance().getCurrentSuggestion();
-            if (suggestion != null) {
-                session.write(suggestion);
-                return true;
-            }
-        }
-
         if (mVirtualFnKeyDown) {
             int resultingKeyCode = -1;
             int resultingCodePoint = -1;

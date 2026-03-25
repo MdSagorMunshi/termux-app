@@ -164,7 +164,7 @@ public final class TerminalRenderer {
             int originalColor = mTextPaint.getColor();
             int ghostColor = (palette[TextStyle.COLOR_INDEX_FOREGROUND] & 0x00FFFFFF) | 0x66000000; // 40% alpha
             mTextPaint.setColor(ghostColor);
-            canvas.drawText(suggestion, x, y, mTextPaint);
+            canvas.drawText(suggestion + " (\u2192 to accept)", x, y, mTextPaint);
             mTextPaint.setColor(originalColor);
         }
     }

@@ -37,6 +37,22 @@ public class CommandSuggestionManager {
      * Intercept data sent to the terminal to track the current command line.
      */
     public synchronized void onDataSent(byte[] data, int offset, int count) {
+        // Clear buffer if we detect escape or control sequences (e.g. arrow keys)
+        boolean containsEscape = false;
+        for (int i = offset; i < offset + count; i++) {
+            byte b = data[i];
+            if (b == 27 || (b >= 0 && b < 32 && b != '\r' && b != '\n' && b != 8 && b != 127 && b != 9)) {
+                containsEscape = true;
+                break;
+            }
+        }
+
+        if (containsEscape) {
+            mCurrentLineBuffer = "";
+            mCurrentSuggestion = null;
+            return;
+        }
+
         String input = new String(data, offset, count);
         for (char c : input.toCharArray()) {
             if (c == '\r' || c == '\n') {
