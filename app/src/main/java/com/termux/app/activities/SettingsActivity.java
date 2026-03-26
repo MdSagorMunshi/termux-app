@@ -68,6 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
                     configureTermuxTaskerPreference(context);
                     configureTermuxWidgetPreference(context);
                     configureAboutPreference(context);
+                    configureDeveloperPreference(context);
                     configureDonatePreference(context);
                 }
             }.start();
@@ -113,29 +114,18 @@ public class SettingsActivity extends AppCompatActivity {
             Preference aboutPreference = findPreference("about");
             if (aboutPreference != null) {
                 aboutPreference.setOnPreferenceClickListener(preference -> {
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            String title = "About";
+                    android.content.Intent aboutIntent = new android.content.Intent(context, AboutActivity.class);
+                    startActivity(aboutIntent);
+                    return true;
+                });
+            }
+        }
 
-                            StringBuilder aboutString = new StringBuilder();
-                            aboutString.append(TermuxUtils.getAppInfoMarkdownString(context, TermuxUtils.AppInfoMode.TERMUX_AND_PLUGIN_PACKAGES));
-                            aboutString.append("\n\n").append(AndroidUtils.getDeviceInfoMarkdownString(context, true));
-                            aboutString.append("\n\n").append(TermuxUtils.getImportantLinksMarkdownString(context));
-
-                            String userActionName = UserAction.ABOUT.getName();
-
-                            ReportInfo reportInfo = new ReportInfo(userActionName,
-                                TermuxConstants.TERMUX_APP.TERMUX_SETTINGS_ACTIVITY_NAME, title);
-                            reportInfo.setReportString(aboutString.toString());
-                            reportInfo.setReportSaveFileLabelAndPath(userActionName,
-                                Environment.getExternalStorageDirectory() + "/" +
-                                    FileUtils.sanitizeFileName(TermuxConstants.TERMUX_APP_NAME + "-" + userActionName + ".log", true, true));
-
-                            ReportActivity.startReportActivity(context, reportInfo);
-                        }
-                    }.start();
-
+        private void configureDeveloperPreference(@NonNull Context context) {
+            Preference developerPreference = findPreference("developer");
+            if (developerPreference != null) {
+                developerPreference.setOnPreferenceClickListener(preference -> {
+                    ShareUtils.openUrl(context, TermuxConstants.TERMINUX_DEVELOPER_GITHUB_URL);
                     return true;
                 });
             }

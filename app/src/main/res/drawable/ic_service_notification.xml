@@ -4,18 +4,27 @@
     android:viewportWidth="24"
     android:viewportHeight="24">
     <!--
-        Updated notification icon compliant with system icons guidelines
-        https://material.io/design/iconography/system-icons.html
+        TerminuX notification icon - compact TX monogram
     -->
 
     <group>
         <clip-path
             android:pathData="M0,0h24v24h-24z"/>
 
+        <!-- Terminal bracket > -->
         <path
-            android:pathData="M5,4H2L8,12L2,20H5L11,12L5,4Z"
+            android:pathData="M4,4H6.5L11.5,12L6.5,20H4L9,12L4,4Z"
             android:fillColor="#ffffff"/>
 
+        <!-- X mark -->
+        <path
+            android:pathData="M14,4L17,4L21,12L17,12Z"
+            android:fillColor="#ffffff"/>
+        <path
+            android:pathData="M14,20L17,20L21,12L17,12Z"
+            android:fillColor="#ffffff"/>
+
+        <!-- Underscore -->
         <path
             android:pathData="M13,18H22V20H13V18Z"
             android:fillColor="#ffffff"/>

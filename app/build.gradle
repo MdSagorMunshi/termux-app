@@ -41,10 +41,11 @@ android {
     }
 
     defaultConfig {
+        applicationId "com.ryanshelby.terminux"
         minSdkVersion project.properties.minSdkVersion.toInteger()
         targetSdkVersion project.properties.targetSdkVersion.toInteger()
-        versionCode 118
-        versionName "0.118.0"
+        versionCode 1
+        versionName "1.0.0"
 
         if (appVersionName) versionName = appVersionName
         validateVersionName(versionName)
@@ -52,13 +53,13 @@ android {
         buildConfigField "String", "TERMUX_PACKAGE_VARIANT", "\"" + project.ext.packageVariant + "\"" // Used by TermuxApplication class
 
         manifestPlaceholders.TERMUX_PACKAGE_NAME = "com.termux"
-        manifestPlaceholders.TERMUX_APP_NAME = "Termux"
-        manifestPlaceholders.TERMUX_API_APP_NAME = "Termux:API"
-        manifestPlaceholders.TERMUX_BOOT_APP_NAME = "Termux:Boot"
-        manifestPlaceholders.TERMUX_FLOAT_APP_NAME = "Termux:Float"
-        manifestPlaceholders.TERMUX_STYLING_APP_NAME = "Termux:Styling"
-        manifestPlaceholders.TERMUX_TASKER_APP_NAME = "Termux:Tasker"
-        manifestPlaceholders.TERMUX_WIDGET_APP_NAME = "Termux:Widget"
+        manifestPlaceholders.TERMUX_APP_NAME = "TerminuX"
+        manifestPlaceholders.TERMUX_API_APP_NAME = "TerminuX:API"
+        manifestPlaceholders.TERMUX_BOOT_APP_NAME = "TerminuX:Boot"
+        manifestPlaceholders.TERMUX_FLOAT_APP_NAME = "TerminuX:Float"
+        manifestPlaceholders.TERMUX_STYLING_APP_NAME = "TerminuX:Styling"
+        manifestPlaceholders.TERMUX_TASKER_APP_NAME = "TerminuX:Tasker"
+        manifestPlaceholders.TERMUX_WIDGET_APP_NAME = "TerminuX:Widget"
 
         externalNativeBuild {
             ndkBuild {
@@ -132,10 +133,10 @@ android {
         variant.outputs.all { output ->
             if (variant.buildType.name == "debug") {
                 def abi = output.getFilter(com.android.build.OutputFile.ABI)
-                outputFileName = new File("termux-app_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + "debug") + "_" + (abi ? abi : "universal") + ".apk")
+                outputFileName = new File("terminux-app_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + "debug") + "_" + (abi ? abi : "universal") + ".apk")
             } else if (variant.buildType.name == "release") {
                 def abi = output.getFilter(com.android.build.OutputFile.ABI)
-                outputFileName = new File("termux-app_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + "release") + "_" + (abi ? abi : "universal") + ".apk")
+                outputFileName = new File("terminux-app_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + "release") + "_" + (abi ? abi : "universal") + ".apk")
             }
         }
     }

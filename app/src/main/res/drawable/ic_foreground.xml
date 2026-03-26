@@ -4,25 +4,39 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- Keep in sync with non-adaptive ic_launcher.xml -->
+    <!-- TerminuX "TX" monogram icon
+         A stylized terminal prompt with X accent -->
+
+    <!-- Terminal bracket > -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M34,38
-                          h6
-                          l12,16
-                          l-12,16
-                          h-6
-                          l12,-16
-                          "
+        android:fillColor="#00E5FF"
+        android:pathData="M30,36
+                          h5
+                          l14,18
+                          l-14,18
+                          h-5
+                          l14,-18
+                          Z"
         />
 
+    <!-- Underscore cursor -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M56,66
-                          h18
-                          v4
-                          h-18
-                          "
+        android:fillColor="#00E5FF"
+        android:pathData="M52,68
+                          h20
+                          v3
+                          h-20
+                          Z"
+        />
+
+    <!-- X mark (stylized) -->
+    <path
+        android:fillColor="#1DE9B6"
+        android:pathData="M62,36 L70,36 L78,48 L70,48 Z"
+        />
+    <path
+        android:fillColor="#1DE9B6"
+        android:pathData="M62,60 L70,60 L78,48 L70,48 Z"
         />
 
 </vector>

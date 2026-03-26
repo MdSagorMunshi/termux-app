@@ -1,17 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="TermuxAlertDialogStyle" parent="@android:style/Theme.Material.Light.Dialog.Alert">
-        <!-- Seen in buttons on alert dialog: -->
-        <item name="android:colorAccent">#212121</item>
+    <!-- Base TerminuX style - parent for all dot-notation children -->
+    <style name="TerminuX" parent="Theme.Material3.DayNight.NoActionBar" />
+
+    <!-- TerminuX Alert Dialog -->
+    <style name="TermuxAlertDialogStyle" parent="@style/ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:windowBackground">@color/terminux_surface</item>
+        <item name="colorPrimary">@color/terminux_accent_primary</item>
+        <item name="colorOnSurface">@color/terminux_on_bg</item>
+        <item name="android:colorAccent">@color/terminux_accent_primary</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/TerminuX.Dialog.Title</item>
+    </style>
+
+    <style name="TerminuX.Dialog.Title" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textColor">@color/terminux_on_bg</item>
+    </style>
+
+    <!-- Drawer Button Styles -->
+    <style name="TerminuX.Drawer.ButtonStyle" parent="@style/Widget.Material3.Button.TextButton">
+        <item name="android:textColor">@color/terminux_accent_primary</item>
+        <item name="rippleColor">@color/terminux_ripple</item>
     </style>
 
     <style name="TermuxActivity.Drawer.ButtonBarStyle.Light" parent="@style/Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/terminux_on_bg</item>
     </style>
 
     <style name="TermuxActivity.Drawer.ButtonBarStyle.Dark" parent="@style/Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/terminux_accent_primary</item>
+    </style>
+
+    <!-- TerminuX Card Styles -->
+    <style name="TerminuX.Card" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@color/terminux_card_bg</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="strokeColor">@color/terminux_card_stroke</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="TerminuX.Card.Active" parent="TerminuX.Card">
+        <item name="strokeColor">@color/terminux_card_active_stroke</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="cardBackgroundColor">@color/terminux_card_selected_bg</item>
+    </style>
+
+    <!-- TerminuX Button Styles -->
+    <style name="TerminuX.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/terminux_accent_primary</item>
+        <item name="android:textColor">@color/terminux_bg</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="TerminuX.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="backgroundTint">@color/terminux_surface_variant</item>
+        <item name="android:textColor">@color/terminux_accent_primary</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="TerminuX.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">@color/terminux_accent_primary</item>
+        <item name="rippleColor">@color/terminux_ripple</item>
+    </style>
+
+    <!-- TerminuX Toolbar Style -->
+    <style name="TerminuX.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/terminux_toolbar_bg</item>
+        <item name="titleTextColor">@color/terminux_on_bg</item>
+        <item name="subtitleTextColor">@color/terminux_on_surface</item>
+        <item name="navigationIconTint">@color/terminux_accent_primary</item>
+    </style>
+
+    <!-- Window Animation Style -->
+    <style name="TerminuX.WindowAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_up</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_down</item>
+    </style>
+
+    <!-- Session Item Text Styles -->
+    <style name="TerminuX.SessionTitle">
+        <item name="android:textColor">@color/terminux_on_bg</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TerminuX.SessionSubtitle">
+        <item name="android:textColor">@color/terminux_on_surface_dim</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- FAB Style -->
+    <style name="TerminuX.FAB" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">@color/terminux_fab_bg</item>
+        <item name="tint">@color/terminux_fab_on</item>
+        <item name="elevation">8dp</item>
+        <item name="shapeAppearanceOverlay">@style/TerminuX.FAB.Shape</item>
+    </style>
+
+    <style name="TerminuX.FAB.Shape" parent="">
+        <item name="cornerSize">16dp</item>
     </style>
 
 </resources>

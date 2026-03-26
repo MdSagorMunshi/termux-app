@@ -539,6 +539,9 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         });
         recyclerView.setAdapter(mModernSessionAdapter);
 
+        // Setup drawer animations
+        setupDrawerAnimations();
+
         EditText searchInput = findViewById(R.id.session_search_input);
         searchInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -636,14 +639,18 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
 
         View newSessionFab = findViewById(R.id.new_session_fab);
         if (newSessionFab != null) {
+            newSessionFab.setAlpha(0f);
             newSessionFab.setScaleX(0f);
             newSessionFab.setScaleY(0f);
+            newSessionFab.setTranslationY(40f);
             newSessionFab.animate()
+                    .alpha(1f)
                     .scaleX(1f)
                     .scaleY(1f)
-                    .setDuration(400)
-                    .setInterpolator(new android.view.animation.OvershootInterpolator())
-                    .setStartDelay(500)
+                    .translationY(0f)
+                    .setDuration(500)
+                    .setInterpolator(new android.view.animation.OvershootInterpolator(1.2f))
+                    .setStartDelay(600)
                     .start();
             newSessionFab.setOnClickListener(v -> mTermuxTerminalSessionActivityClient.addNewSession(false, null));
             newSessionFab.setOnLongClickListener(v -> {
@@ -909,6 +916,53 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
 
     public DrawerLayout getDrawer() {
         return (DrawerLayout) findViewById(R.id.drawer_layout);
+    }
+
+    private void setupDrawerAnimations() {
+        DrawerLayout drawer = getDrawer();
+        if (drawer == null) return;
+
+        final View leftDrawer = findViewById(R.id.left_drawer);
+        if (leftDrawer == null) return;
+
+        drawer.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+                // Subtle parallax: slide content slightly and add dim effect
+                View content = findViewById(R.id.terminal_view);
+                if (content != null) {
+                    float moveFactor = drawerView.getWidth() * slideOffset * 0.15f;
+                    content.setTranslationX(moveFactor);
+                    content.setAlpha(1f - (slideOffset * 0.25f));
+                }
+
+                // Fade in drawer content elements
+                View header = leftDrawer.findViewById(R.id.drawer_header);
+                if (header != null) {
+                    header.setAlpha(slideOffset);
+                    header.setTranslationX(-30f * (1f - slideOffset));
+                }
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+                // Reset session list animations for fresh entrance
+                if (mModernSessionAdapter != null) {
+                    mModernSessionAdapter.resetAnimationPosition();
+                    mModernSessionAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+                // Reset terminal view position
+                View content = findViewById(R.id.terminal_view);
+                if (content != null) {
+                    content.setTranslationX(0f);
+                    content.setAlpha(1f);
+                }
+            }
+        });
     }
 
 

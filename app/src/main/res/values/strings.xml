@@ -2,13 +2,13 @@
 
 <!DOCTYPE resources [
     <!ENTITY TERMUX_PACKAGE_NAME "com.termux">
-    <!ENTITY TERMUX_APP_NAME "Termux">
-    <!ENTITY TERMUX_API_APP_NAME "Termux:API">
-    <!ENTITY TERMUX_BOOT_APP_NAME "Termux:Boot">
-    <!ENTITY TERMUX_FLOAT_APP_NAME "Termux:Float">
-    <!ENTITY TERMUX_STYLING_APP_NAME "Termux:Styling">
-    <!ENTITY TERMUX_TASKER_APP_NAME "Termux:Tasker">
-    <!ENTITY TERMUX_WIDGET_APP_NAME "Termux:Widget">
+    <!ENTITY TERMUX_APP_NAME "TerminuX">
+    <!ENTITY TERMUX_API_APP_NAME "TerminuX:API">
+    <!ENTITY TERMUX_BOOT_APP_NAME "TerminuX:Boot">
+    <!ENTITY TERMUX_FLOAT_APP_NAME "TerminuX:Float">
+    <!ENTITY TERMUX_STYLING_APP_NAME "TerminuX:Styling">
+    <!ENTITY TERMUX_TASKER_APP_NAME "TerminuX:Tasker">
+    <!ENTITY TERMUX_WIDGET_APP_NAME "TerminuX:Widget">
     ]>
 
 <resources>
@@ -16,6 +16,14 @@
     <string name="application_name">&TERMUX_APP_NAME;</string>
     <string name="shared_user_label">&TERMUX_APP_NAME; user</string>
 
+    <!-- Developer Credits -->
+    <string name="developer_name">Ryan Shelby</string>
+    <string name="developer_credit">Developed by Ryan Shelby</string>
+    <string name="developer_github_url">https://github.com/MdSagorMunshi</string>
+    <string name="powered_by_termux">Powered by Termux — termux.dev</string>
+    <string name="about_description">TerminuX is a next-generation terminal emulator for Android, built on the powerful Termux platform. Redesigned with a premium, futuristic interface for the modern developer.</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_attribution">This app is powered by the open-source Termux project.\nVisit termux.dev for more information.</string>
 
 
     <!-- Termux RUN_COMMAND permission -->
@@ -89,7 +97,7 @@
 
     <string name="action_report_issue">Report Issue</string>
     <string name="msg_generating_report">Generating Report</string>
-    <string name="msg_add_termux_debug_info">Add termux debug info to report?</string>
+    <string name="msg_add_termux_debug_info">Add debug info to report?</string>
 
     <string name="error_styling_not_installed">The &TERMUX_STYLING_APP_NAME; Plugin App is not installed.</string>
     <string name="action_styling_install">Install</string>

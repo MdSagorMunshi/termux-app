@@ -34,10 +34,10 @@ public class OnboardingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_onboarding);
 
         mSteps = new ArrayList<>();
-        mSteps.add(new OnboardingStep("Welcome to Termux Next", "Experience the most powerful terminal for Android, now with a modern redesign and smart features.", R.drawable.banner));
-        mSteps.add(new OnboardingStep("Command Suggestions", "Boost your productivity with intelligent history-based command suggestions and autocompletion.", R.drawable.ic_service_notification));
-        mSteps.add(new OnboardingStep("Workspaces", "Organize your terminal sessions into workspaces. Pin and search through your active tasks with ease.", R.drawable.ic_new_session));
-        mSteps.add(new OnboardingStep("Premium Customization", "Enjoy Material You dynamic colors and a fully customizable extra-keys toolbar.", R.drawable.ic_settings));
+        mSteps.add(new OnboardingStep("Welcome to TerminuX", "The next-generation terminal for Android. A premium, futuristic experience built on the powerful Termux platform.", R.drawable.banner));
+        mSteps.add(new OnboardingStep("Smart Suggestions", "Boost your productivity with intelligent history-based command suggestions and predictive autocompletion.", R.drawable.ic_service_notification));
+        mSteps.add(new OnboardingStep("Workspace Sessions", "Organize your terminal sessions into workspaces. Pin, search, and manage your active tasks effortlessly.", R.drawable.ic_new_session));
+        mSteps.add(new OnboardingStep("Premium Design", "Enjoy a stunning dark-first interface with electric accents, smooth animations, and full customization.", R.drawable.ic_settings));
 
         mViewPager = findViewById(R.id.onboarding_view_pager);
         mNextButton = findViewById(R.id.onboarding_next_button);

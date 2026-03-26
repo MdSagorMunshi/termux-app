@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?attr/colorSurface">
+    android:background="@color/terminux_bg">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
+        style="@style/TerminuX.Toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
         app:title="Extra Keys Editor"
-        app:titleTextColor="?attr/colorOnPrimary"
+        app:titleTextColor="@color/terminux_on_bg"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        app:navigationIconTint="?attr/colorOnPrimary" />
+        app:navigationIconTint="@color/terminux_accent_primary" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -32,14 +32,13 @@
                 android:layout_height="wrap_content"
                 android:text="Customize your toolbar buttons. These will be available above the soft keyboard."
                 android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/terminux_on_surface"
                 android:layout_marginBottom="24dp" />
 
             <com.google.android.material.card.MaterialCardView
+                style="@style/TerminuX.Card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="1dp">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:id="@+id/extra_keys_grid_container"
@@ -52,7 +51,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/add_row_button"
-                style="@style/Widget.Material3.Button.TonalButton"
+                style="@style/TerminuX.Button.Tonal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -64,7 +63,8 @@
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:dividerColor="@color/terminux_drawer_divider" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,7 +74,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/reset_keys_button"
-            style="@style/Widget.Material3.Button.TextButton"
+            style="@style/TerminuX.Button.Text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -82,6 +82,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/save_keys_button"
+            style="@style/TerminuX.Button.Primary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

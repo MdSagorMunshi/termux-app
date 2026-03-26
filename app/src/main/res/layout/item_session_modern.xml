@@ -3,32 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="4dp"
-    app:cardCornerRadius="12dp"
+    android:layout_marginVertical="3dp"
+    android:layout_marginHorizontal="4dp"
+    app:cardCornerRadius="14dp"
     app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/terminux_card_bg"
     app:strokeWidth="1dp"
-    app:strokeColor="#33888888"
-    app:rippleColor="?attr/colorControlHighlight">
+    app:strokeColor="@color/terminux_card_stroke"
+    app:rippleColor="@color/terminux_ripple">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp">
 
+        <!-- Session Status LED Indicator -->
+        <View
+            android:id="@+id/session_status_indicator"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/session_idle_indicator" />
+
+        <!-- Session Icon -->
         <ImageView
             android:id="@+id/session_icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/session_status_indicator"
+            android:layout_marginStart="10dp"
             android:src="@drawable/ic_service_notification"
-            app:tint="?attr/colorPrimary" />
+            app:tint="@color/terminux_on_surface" />
 
+        <!-- Session Info -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/session_icon"
             android:layout_toStartOf="@id/pin_icon"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
             android:orientation="vertical">
 
             <TextView
@@ -37,8 +52,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textColor="?attr/colorOnSurface" />
+                style="@style/TerminuX.SessionTitle" />
 
             <TextView
                 android:id="@+id/session_subtitle"
@@ -46,19 +60,20 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textAppearance="?attr/textAppearanceBodySmall"
-                android:textColor="?attr/colorOnSurfaceVariant" />
+                android:layout_marginTop="1dp"
+                style="@style/TerminuX.SessionSubtitle" />
         </LinearLayout>
 
+        <!-- Pin Icon -->
         <ImageView
             android:id="@+id/pin_icon"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_info"
             android:visibility="gone"
-            app:tint="?attr/colorAccent" />
+            app:tint="@color/terminux_accent_primary" />
 
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

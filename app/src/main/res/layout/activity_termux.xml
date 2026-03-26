@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="@color/terminux_bg">
 
     <RelativeLayout
         android:id="@+id/activity_termux_root_relative_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginHorizontal="3dp"
+        android:layout_marginHorizontal="0dp"
         android:layout_marginVertical="0dp"
         android:orientation="vertical">
 
@@ -33,21 +34,29 @@
                 android:scrollbars="vertical"
                 tools:ignore="UnusedAttribute" />
 
+            <!-- TerminuX New Session FAB -->
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/new_session_fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
-                android:layout_margin="16dp"
+                android:layout_margin="20dp"
                 android:text="New Session"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="13sp"
                 app:icon="@drawable/ic_new_session"
-                app:backgroundTint="?attr/colorPrimary"
-                app:iconTint="?attr/colorOnPrimary"
-                android:textColor="?attr/colorOnPrimary" />
+                app:backgroundTint="@color/terminux_fab_bg"
+                app:iconTint="@color/terminux_fab_on"
+                android:textColor="@color/terminux_fab_on"
+                app:elevation="12dp"
+                app:strokeColor="@color/terminux_accent_glow"
+                app:strokeWidth="0dp"
+                app:cornerRadius="16dp" />
 
+            <!-- TerminuX Sidebar Drawer -->
             <LinearLayout
                 android:id="@+id/left_drawer"
-                android:layout_width="240dp"
+                android:layout_width="280dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:choiceMode="singleChoice"
@@ -55,43 +64,117 @@
                 android:dividerHeight="0dp"
                 android:descendantFocusability="blocksDescendants"
                 android:orientation="vertical"
-                android:background="?attr/termuxActivityDrawerBackground">
+                android:background="@drawable/terminux_drawer_bg">
 
+                <!-- Drawer Header: Logo + Branding -->
                 <LinearLayout
+                    android:id="@+id/drawer_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageButton
-                        android:id="@+id/settings_button"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_settings"
-                        android:background="@null"
-                        android:contentDescription="@string/action_open_settings"
-                        app:tint="?attr/termuxActivityDrawerImageTint" />
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- App Logo -->
+                        <ImageView
+                            android:id="@+id/drawer_app_logo"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_foreground"
+                            android:background="@color/terminux_surface_variant"
+                            android:padding="4dp"
+                            android:contentDescription="TerminuX logo" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="12dp">
+
+                            <TextView
+                                android:id="@+id/drawer_app_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TerminuX"
+                                android:textColor="@color/terminux_accent_primary"
+                                android:textSize="18sp"
+                                android:fontFamily="sans-serif-medium"
+                                android:letterSpacing="0.05" />
+
+                            <TextView
+                                android:id="@+id/drawer_version_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="v1.0.0 by Ryan Shelby"
+                                android:textColor="@color/terminux_on_surface_dim"
+                                android:textSize="11sp"
+                                android:fontFamily="sans-serif" />
+
+                        </LinearLayout>
+
+                        <!-- Settings gear -->
+                        <ImageButton
+                            android:id="@+id/settings_button"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_settings"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/action_open_settings"
+                            app:tint="@color/terminux_on_surface_dim" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="@color/terminux_drawer_divider" />
+
+                <!-- Session Search -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/session_search_layout"
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginBottom="8dp"
                     app:hintEnabled="false"
+                    app:boxStrokeColor="@color/terminux_card_stroke"
+                    app:boxBackgroundColor="@color/terminux_surface"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
                     app:startIconDrawable="@android:drawable/ic_menu_search"
+                    app:startIconTint="@color/terminux_on_surface_dim"
                     app:endIconMode="clear_text">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/session_search_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Search sessions..."
-                        android:padding="8dp"
+                        android:hint="Search sessions…"
+                        android:textColorHint="@color/terminux_on_surface_dim"
+                        android:textColor="@color/terminux_on_bg"
+                        android:padding="10dp"
+                        android:textSize="13sp"
                         android:singleLine="true" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Sessions RecyclerView -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/terminal_sessions_recycler_view"
                     android:layout_width="match_parent"
@@ -99,40 +182,57 @@
                     android:layout_gravity="top"
                     android:layout_weight="1"
                     android:clipToPadding="false"
-                    android:padding="8dp" />
+                    android:paddingHorizontal="8dp"
+                    android:paddingBottom="8dp" />
+
+                <!-- Bottom Action Bar -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="@color/terminux_drawer_divider" />
 
                 <LinearLayout
                     style="?android:attr/buttonBarStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingVertical="4dp"
+                    android:paddingHorizontal="8dp">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/toggle_keyboard_button"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
+                        style="@style/TerminuX.Button.Text"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/action_toggle_soft_keyboard" />
+                        android:text="@string/action_toggle_soft_keyboard"
+                        android:textSize="12sp"
+                        app:iconSize="18dp"
+                        app:iconGravity="textStart" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/new_session_button"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
+                        style="@style/TerminuX.Button.Text"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/action_new_session" />
+                        android:text="@string/action_new_session"
+                        android:textSize="12sp"
+                        app:iconSize="18dp"
+                        app:iconGravity="textStart" />
                 </LinearLayout>
             </LinearLayout>
 
         </androidx.drawerlayout.widget.DrawerLayout>
 
+        <!-- Extra Keys Toolbar -->
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/terminal_toolbar_view_pager"
             android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="37.5dp"
-            android:background="@color/black"
+            android:background="@color/terminux_extra_keys_bg"
             android:layout_alignParentBottom="true" />
 
     </RelativeLayout>

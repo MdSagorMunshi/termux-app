@@ -327,6 +327,20 @@ public final class TermuxConstants {
 
 
     /*
+     * TerminuX developer and attribution variables.
+     */
+
+    /** TerminuX developer name */
+    public static final String TERMINUX_DEVELOPER_NAME = "Ryan Shelby";
+    /** TerminuX developer GitHub url */
+    public static final String TERMINUX_DEVELOPER_GITHUB_URL = "https://github.com/MdSagorMunshi";
+    /** TerminuX attribution - powered by Termux */
+    public static final String TERMINUX_ATTRIBUTION = "Powered by Termux — https://termux.dev";
+    /** TerminuX version display name */
+    public static final String TERMINUX_VERSION_NAME = "1.0.0";
+
+
+    /*
      * Termux organization variables.
      */
 
@@ -346,9 +360,9 @@ public final class TermuxConstants {
      * Termux and its plugin app and package names and urls.
      */
 
-    /** Termux app name */
-    public static final String TERMUX_APP_NAME = "Termux"; // Default: "Termux"
-    /** Termux package name */
+    /** Termux app name - rebranded to TerminuX */
+    public static final String TERMUX_APP_NAME = "TerminuX"; // Default: "Termux"
+    /** Termux package name - kept as com.termux for bootstrap compatibility */
     public static final String TERMUX_PACKAGE_NAME = "com.termux"; // Default: "com.termux"
     /** Termux GitHub repo name */
     public static final String TERMUX_GITHUB_REPO_NAME = "termux-app"; // Default: "termux-app"
@@ -551,11 +565,11 @@ public final class TermuxConstants {
     public static final String TERMUX_PACKAGES_GITHUB_WIKI_REPO_URL = TERMUX_PACKAGES_GITHUB_REPO_URL + "/wiki"; // Default: "https://github.com/termux/termux-packages/wiki"
 
 
-    /** Termux support email url */
-    public static final String TERMUX_SUPPORT_EMAIL_URL = "support@termux.dev"; // Default: "support@termux.dev"
+    /** TerminuX support email url */
+    public static final String TERMUX_SUPPORT_EMAIL_URL = "sudoryan@icloud.com"; // Updated for TerminuX
 
-    /** Termux support email mailto url */
-    public static final String TERMUX_SUPPORT_EMAIL_MAILTO_URL = "mailto:" + TERMUX_SUPPORT_EMAIL_URL; // Default: "mailto:support@termux.dev"
+    /** TerminuX support email mailto url */
+    public static final String TERMUX_SUPPORT_EMAIL_MAILTO_URL = "mailto:" + TERMUX_SUPPORT_EMAIL_URL; // Updated for TerminuX
 
 
     /** Termux Reddit subreddit */

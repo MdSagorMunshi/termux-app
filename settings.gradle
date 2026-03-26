@@ -1,1 +1,3 @@
 include ':app', ':termux-shared', ':terminal-emulator', ':terminal-view'
+
+rootProject.name = 'TerminuX'

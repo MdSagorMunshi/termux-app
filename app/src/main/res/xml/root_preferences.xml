@@ -34,16 +34,27 @@
         app:isPreferenceVisible="false"
         app:fragment="com.termux.app.fragments.settings.TermuxWidgetPreferencesFragment"/>
 
-    <Preference
-        app:key="about"
-        app:title="@string/about_preference_title"
-        app:persistent="false"/>
-    <!-- app:layout="@layout/preference_markdown_text" -->
+    <PreferenceCategory
+        app:title="Info">
 
-    <Preference
-        app:key="donate"
-        app:title="@string/donate_preference_title"
-        app:persistent="false"
-        app:isPreferenceVisible="false"/>
+        <Preference
+            app:key="about"
+            app:title="About TerminuX"
+            app:summary="Version, developer credits &amp; attribution"
+            app:persistent="false"/>
+
+        <Preference
+            app:key="developer"
+            app:title="Developer"
+            app:summary="Ryan Shelby — github.com/MdSagorMunshi"
+            app:persistent="false"/>
+
+        <Preference
+            app:key="donate"
+            app:title="@string/donate_preference_title"
+            app:persistent="false"
+            app:isPreferenceVisible="false"/>
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

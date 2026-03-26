@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="termuxActivityDrawerBackground" format="reference" />
-    <attr name="termuxActivityDrawerImageTint" format="reference" />
+    <!-- Drawer -->
+    <attr name="termuxActivityDrawerBackground" format="reference|color" />
+    <attr name="termuxActivityDrawerImageTint" format="reference|color" />
+    <attr name="termuxDrawerDividerColor" format="reference|color" />
+
+    <!-- Extra Keys -->
+    <attr name="extraKeysButtonTextColor" format="reference|color" />
+    <attr name="extraKeysButtonActiveTextColor" format="reference|color" />
+    <attr name="extraKeysButtonBackgroundColor" format="reference|color" />
+    <attr name="extraKeysButtonActiveBackgroundColor" format="reference|color" />
+
+    <!-- TerminuX accents -->
+    <attr name="terminuxAccentPrimary" format="reference|color" />
+    <attr name="terminuxAccentGlow" format="reference|color" />
+    <attr name="terminuxCardBackground" format="reference|color" />
+    <attr name="terminuxCardStroke" format="reference|color" />
+    <attr name="terminuxSessionActiveColor" format="reference|color" />
+    <attr name="terminuxSessionIdleColor" format="reference|color" />
 </resources>

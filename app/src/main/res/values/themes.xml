@@ -1,44 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--
-     https://material.io/develop/android/theming/dark
+     TerminuX Theme System - Dark First, Premium Design
+     Built on Material 3 with custom TerminuX design tokens
     -->
 
-    <!-- Base themes -->
+    <!-- Base TerminuX app theme -->
     <style name="Theme.TermuxApp.DayNight.DarkActionBar" parent="Theme.Material3.DayNight"/>
     <style name="Theme.TermuxApp.DayNight.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- We override this to black for Termux standard look, but let Material 3 handle the rest -->
-        <item name="android:windowBackground">@color/black</item>
-        
-        <!-- Restore missing required attributes to prevent crashes -->
-        <item name="extraKeysButtonTextColor">@color/white</item>
-        <item name="extraKeysButtonActiveTextColor">@color/red_400</item>
-        <item name="extraKeysButtonBackgroundColor">@color/black</item>
-        <item name="extraKeysButtonActiveBackgroundColor">@color/grey_500</item>
-        
-        <item name="termuxActivityDrawerBackground">@color/black</item>
-        <item name="termuxActivityDrawerImageTint">@color/white</item>
+        <!-- TerminuX dark-first surfaces -->
+        <item name="android:windowBackground">@color/terminux_bg</item>
+        <item name="colorSurface">@color/terminux_surface</item>
+        <item name="colorSurfaceVariant">@color/terminux_surface_variant</item>
+
+        <!-- TerminuX accent colors -->
+        <item name="colorPrimary">@color/terminux_accent_primary</item>
+        <item name="colorSecondary">@color/terminux_accent_secondary</item>
+        <item name="colorTertiary">@color/terminux_accent_tertiary</item>
+        <item name="colorOnPrimary">@color/terminux_bg</item>
+        <item name="colorOnSecondary">@color/terminux_bg</item>
+
+        <!-- Text colors -->
+        <item name="colorOnSurface">@color/terminux_on_bg</item>
+        <item name="colorOnSurfaceVariant">@color/terminux_on_surface</item>
+        <item name="android:textColorPrimary">@color/terminux_on_bg</item>
+        <item name="android:textColorSecondary">@color/terminux_on_surface</item>
+
+        <!-- Extra keys styling -->
+        <item name="extraKeysButtonTextColor">@color/terminux_extra_keys_text</item>
+        <item name="extraKeysButtonActiveTextColor">@color/terminux_accent_primary</item>
+        <item name="extraKeysButtonBackgroundColor">@color/terminux_extra_keys_bg</item>
+        <item name="extraKeysButtonActiveBackgroundColor">@color/terminux_extra_keys_active_bg</item>
+
+        <!-- Drawer styling -->
+        <item name="termuxActivityDrawerBackground">@color/terminux_drawer_bg</item>
+        <item name="termuxActivityDrawerImageTint">@color/terminux_accent_primary</item>
+        <item name="termuxDrawerDividerColor">@color/terminux_drawer_divider</item>
+
+        <!-- TerminuX custom attributes -->
+        <item name="terminuxAccentPrimary">@color/terminux_accent_primary</item>
+        <item name="terminuxAccentGlow">@color/terminux_accent_glow</item>
+        <item name="terminuxCardBackground">@color/terminux_card_bg</item>
+        <item name="terminuxCardStroke">@color/terminux_card_stroke</item>
+        <item name="terminuxSessionActiveColor">@color/terminux_session_active</item>
+        <item name="terminuxSessionIdleColor">@color/terminux_session_idle</item>
+
+        <!-- Ripple -->
+        <item name="android:colorControlHighlight">@color/terminux_ripple</item>
     </style>
 
 
-    <!-- TermuxActivity DayNight NoActionBar theme. -->
+    <!-- TermuxActivity DayNight NoActionBar theme -->
     <style name="Theme.TermuxActivity.DayNight.NoActionBar" parent="Theme.TermuxApp.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimary">@color/terminux_bg</item>
+        <item name="colorPrimaryVariant">@color/terminux_surface</item>
 
-        <!-- Avoid action mode toolbar pushing down terminal content when
-             selecting text on pre-6.0 (non-floating toolbar). -->
+        <item name="android:windowBackground">@color/terminux_bg</item>
+
+        <!-- Avoid action mode toolbar pushing down terminal content -->
         <item name="android:windowActionModeOverlay">true</item>
 
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
 
-        <!-- https://developer.android.com/training/tv/start/start.html#transition-color -->
+        <!-- Activity transitions -->
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAnimationStyle">@style/TerminuX.WindowAnimation</item>
 
         <!-- Left drawer. -->
-        <item name="buttonBarButtonStyle">@style/Widget.Material3.Button.TextButton</item>
+        <item name="buttonBarButtonStyle">@style/TerminuX.Drawer.ButtonStyle</item>
+
+        <!-- Drawer -->
+        <item name="termuxActivityDrawerBackground">@color/terminux_drawer_bg</item>
+        <item name="termuxActivityDrawerImageTint">@color/terminux_accent_primary</item>
     </style>
 
 </resources>

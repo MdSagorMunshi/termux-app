@@ -2,12 +2,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
-        For shortcut.xml:
-        If applicationId in build.gradle is changed from "com.termux", then targetPackage will
-        need to be manually patched since ${applicationId} variable or resource string does not work.
-        If package name in AndroidManifest is changed from "com.termux", then targetClass will
-        need to be manually patched since dot (.) prefix does not work to automatically prefix the
-        package name.
+        TerminuX App Shortcuts
+        Updated targetPackage to match new applicationId
     -->
 
     <shortcut
@@ -18,7 +14,7 @@
         tools:targetApi="n_mr1">
         <intent
             android:action="android.intent.action.RUN"
-            android:targetPackage="com.termux"
+            android:targetPackage="com.ryanshelby.terminux"
             android:targetClass="com.termux.app.TermuxActivity"
             android:name="android.shortcut.conversation"/>
     </shortcut>
@@ -31,7 +27,7 @@
         tools:targetApi="n_mr1">
         <intent
             android:action="android.intent.action.RUN"
-            android:targetPackage="com.termux"
+            android:targetPackage="com.ryanshelby.terminux"
             android:targetClass="com.termux.app.TermuxActivity"
             android:name="android.shortcut.conversation">
             <extra android:name="com.termux.app.failsafe_session" android:value="true"/>
@@ -46,7 +42,7 @@
         tools:targetApi="n_mr1">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.termux"
+            android:targetPackage="com.ryanshelby.terminux"
             android:targetClass="com.termux.app.activities.SettingsActivity"
             android:name="android.shortcut.conversation"/>
     </shortcut>

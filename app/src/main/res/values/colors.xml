@@ -1,3 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- TerminuX Brand Colors -->
+    <color name="terminux_accent_primary">#00E5FF</color>       <!-- Electric Cyan -->
+    <color name="terminux_accent_secondary">#1DE9B6</color>     <!-- Teal -->
+    <color name="terminux_accent_tertiary">#7C4DFF</color>      <!-- Deep Purple -->
+    <color name="terminux_accent_glow">#3300E5FF</color>        <!-- Cyan with 20% alpha for glow -->
+
+    <!-- Surface Colors (Dark-first) -->
+    <color name="terminux_bg">#0A0E14</color>                   <!-- Deep navy-black -->
+    <color name="terminux_surface">#111820</color>              <!-- Slightly lighter -->
+    <color name="terminux_surface_variant">#1A2130</color>      <!-- Cards, elevated surfaces -->
+    <color name="terminux_surface_bright">#222D3D</color>       <!-- Active/selected surfaces -->
+
+    <!-- On-Surface Colors -->
+    <color name="terminux_on_bg">#E8EAED</color>               <!-- Primary text on dark -->
+    <color name="terminux_on_surface">#BDC1C6</color>           <!-- Secondary text -->
+    <color name="terminux_on_surface_dim">#6B7280</color>       <!-- Tertiary/hint text -->
+
+    <!-- Drawer Colors -->
+    <color name="terminux_drawer_bg">#0D1117</color>            <!-- GitHub-dark style -->
+    <color name="terminux_drawer_surface">#161B22</color>       <!-- Drawer card bg -->
+    <color name="terminux_drawer_divider">#21262D</color>       <!-- Subtle divider -->
+
+    <!-- Card Colors -->
+    <color name="terminux_card_bg">#161B22</color>
+    <color name="terminux_card_stroke">#30363D</color>          <!-- Subtle card border -->
+    <color name="terminux_card_active_stroke">#00E5FF</color>   <!-- Active session border -->
+    <color name="terminux_card_selected_bg">#1A2B3D</color>     <!-- Selected/active card -->
+
+    <!-- Status Colors -->
+    <color name="terminux_success">#00E676</color>              <!-- Green -->
+    <color name="terminux_error">#FF5252</color>                <!-- Red -->
+    <color name="terminux_warning">#FFD740</color>              <!-- Amber -->
+    <color name="terminux_info">#40C4FF</color>                 <!-- Light Blue -->
+
+    <!-- Extra Keys Colors -->
+    <color name="terminux_extra_keys_bg">#0D1117</color>
+    <color name="terminux_extra_keys_text">#E8EAED</color>
+    <color name="terminux_extra_keys_active_bg">#1A2B3D</color>
+    <color name="terminux_extra_keys_active_text">#00E5FF</color>
+
+    <!-- Toolbar & FAB -->
+    <color name="terminux_fab_bg">#00E5FF</color>
+    <color name="terminux_fab_on">#0A0E14</color>
+    <color name="terminux_toolbar_bg">#0D1117</color>
+
+    <!-- Gradient endpoints -->
+    <color name="terminux_gradient_start">#0A0E14</color>
+    <color name="terminux_gradient_mid">#0D1520</color>
+    <color name="terminux_gradient_end">#111F2E</color>
+
+    <!-- Ripple / touch feedback -->
+    <color name="terminux_ripple">#1A00E5FF</color>             <!-- 10% cyan -->
+
+    <!-- Session status LED colors -->
+    <color name="terminux_session_active">#00E5FF</color>
+    <color name="terminux_session_idle">#4A5568</color>
+    <color name="terminux_session_error">#FF5252</color>
+
+    <!-- Onboarding colors -->
+    <color name="terminux_onboarding_bg">#050810</color>
+    <color name="terminux_onboarding_indicator_active">#00E5FF</color>
+    <color name="terminux_onboarding_indicator_inactive">#2A3040</color>
+
 </resources>

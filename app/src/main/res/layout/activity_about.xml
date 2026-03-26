@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/terminux_bg"
+    android:fillViewport="true"
+    android:clipToPadding="false"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <!-- Toolbar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/about_toolbar"
+            style="@style/TerminuX.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="About"
+            app:titleTextColor="@color/terminux_on_bg"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@color/terminux_accent_primary" />
+
+        <!-- Hero Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="40dp"
+            android:paddingBottom="32dp">
+
+            <!-- Logo with glow -->
+            <FrameLayout
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center">
+
+                <!-- Glow backdrop -->
+                <View
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/terminux_card_active"
+                    android:alpha="0.3" />
+
+                <ImageView
+                    android:id="@+id/about_logo"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_launcher"
+                    android:contentDescription="TerminuX Logo" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TerminuX"
+                android:textColor="@color/terminux_accent_primary"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/about_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="v1.0.0"
+                android:textColor="@color/terminux_on_surface_dim"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next-gen Terminal for Android"
+                android:textColor="@color/terminux_accent_secondary"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+        <!-- Developer Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="@color/terminux_card_bg"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="@color/terminux_card_stroke"
+            app:strokeWidth="1dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DEVELOPER"
+                    android:textColor="@color/terminux_accent_primary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.15"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- Avatar -->
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp">
+
+                        <View
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/session_active_indicator" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="RS"
+                            android:textColor="@color/terminux_bg"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:gravity="center" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ryan Shelby"
+                            android:textColor="@color/terminux_on_bg"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lead Developer"
+                            android:textColor="@color/terminux_on_surface_dim"
+                            android:textSize="13sp"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- GitHub link -->
+                <LinearLayout
+                    android:id="@+id/about_github_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="16dp"
+                    android:background="?selectableItemBackground"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@android:drawable/ic_menu_share"
+                        android:tint="@color/terminux_accent_primary"
+                        android:contentDescription="GitHub" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="github.com/MdSagorMunshi"
+                        android:textColor="@color/terminux_accent_primary"
+                        android:textSize="14sp"
+                        android:layout_marginStart="12dp" />
+                </LinearLayout>
+
+                <!-- Email link -->
+                <LinearLayout
+                    android:id="@+id/about_email_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="4dp"
+                    android:background="?selectableItemBackground"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@android:drawable/ic_dialog_email"
+                        android:tint="@color/terminux_on_surface_dim"
+                        android:contentDescription="Email" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="sudoryan@icloud.com"
+                        android:textColor="@color/terminux_on_surface"
+                        android:textSize="14sp"
+                        android:layout_marginStart="12dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Attribution Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/terminux_card_bg"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="@color/terminux_card_stroke"
+            app:strokeWidth="1dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="POWERED BY"
+                    android:textColor="@color/terminux_accent_secondary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.15"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Termux"
+                    android:textColor="@color/terminux_on_bg"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TerminuX is a premium terminal emulator built upon the open-source Termux project. We are grateful to the Termux community for their incredible work."
+                    android:textColor="@color/terminux_on_surface"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/about_termux_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Visit termux.dev →"
+                    android:textColor="@color/terminux_accent_secondary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp"
+                    android:background="?selectableItemBackground"
+                    android:padding="4dp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- App Info Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/terminux_card_bg"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="@color/terminux_card_stroke"
+            app:strokeWidth="1dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="APP INFO"
+                    android:textColor="@color/terminux_accent_primary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.15"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Package Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Package"
+                        android:textColor="@color/terminux_on_surface_dim"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/about_package_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="com.ryanshelby.terminux"
+                        android:textColor="@color/terminux_on_bg"
+                        android:textSize="13sp"
+                        android:fontFamily="monospace" />
+                </LinearLayout>
+
+                <!-- Version Code -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Version Code"
+                        android:textColor="@color/terminux_on_surface_dim"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/about_version_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/terminux_on_bg"
+                        android:textSize="13sp"
+                        android:fontFamily="monospace" />
+                </LinearLayout>
+
+                <!-- Build Type -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Build Type"
+                        android:textColor="@color/terminux_on_surface_dim"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/about_build_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Debug"
+                        android:textColor="@color/terminux_on_bg"
+                        android:textSize="13sp"
+                        android:fontFamily="monospace" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Footer -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Made with ❤️ for developers"
+            android:textColor="@color/terminux_on_surface_dim"
+            android:textSize="13sp"
+            android:textAlignment="center"
+            android:layout_marginTop="32dp" />
+
+    </LinearLayout>
+</ScrollView>

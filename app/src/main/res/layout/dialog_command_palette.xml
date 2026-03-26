@@ -5,20 +5,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:minHeight="400dp">
+    android:minHeight="400dp"
+    android:background="@color/terminux_surface">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/palette_search_layout"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Type a command or search sessions..."
-        app:startIconDrawable="@android:drawable/ic_menu_search">
+        android:hint="Type a command or search sessions…"
+        app:hintTextColor="@color/terminux_on_surface_dim"
+        app:boxStrokeColor="@color/terminux_accent_primary"
+        app:boxBackgroundColor="@color/terminux_surface_variant"
+        app:boxCornerRadiusTopStart="14dp"
+        app:boxCornerRadiusTopEnd="14dp"
+        app:boxCornerRadiusBottomStart="14dp"
+        app:boxCornerRadiusBottomEnd="14dp"
+        app:startIconDrawable="@android:drawable/ic_menu_search"
+        app:startIconTint="@color/terminux_accent_primary">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/palette_search_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/terminux_on_bg"
+            android:textColorHint="@color/terminux_on_surface_dim"
             android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>

@@ -546,7 +546,16 @@ public class TermuxUtils {
 
         StringBuilder markdownString = new StringBuilder();
 
-        markdownString.append("## Important Links");
+        // TerminuX Developer Info
+        markdownString.append("## Developer");
+        markdownString.append("\n\n").append(MarkdownUtils.getLinkMarkdownString(TermuxConstants.TERMINUX_DEVELOPER_NAME, TermuxConstants.TERMINUX_DEVELOPER_GITHUB_URL)).append("  ");
+        markdownString.append("\n").append(MarkdownUtils.getLinkMarkdownString(TermuxConstants.TERMUX_SUPPORT_EMAIL_URL, TermuxConstants.TERMUX_SUPPORT_EMAIL_MAILTO_URL)).append("  ");
+
+        // Termux Attribution
+        markdownString.append("\n\n## Attribution");
+        markdownString.append("\n\n").append(TermuxConstants.TERMINUX_ATTRIBUTION).append("  ");
+
+        markdownString.append("\n\n## Important Links");
 
         markdownString.append("\n\n### GitHub\n");
         markdownString.append("\n").append(MarkdownUtils.getLinkMarkdownString(TermuxConstants.TERMUX_APP_NAME, TermuxConstants.TERMUX_GITHUB_REPO_URL)).append("  ");

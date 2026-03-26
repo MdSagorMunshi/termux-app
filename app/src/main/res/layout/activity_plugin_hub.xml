@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?attr/colorSurface">
+    android:background="@color/terminux_bg">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
+        style="@style/TerminuX.Toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
         app:title="Plugin Hub"
-        app:titleTextColor="?attr/colorOnPrimary"
+        app:titleTextColor="@color/terminux_on_bg"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        app:navigationIconTint="?attr/colorOnPrimary" />
+        app:navigationIconTint="@color/terminux_accent_primary" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/plugin_recycler_view"

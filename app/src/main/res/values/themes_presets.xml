@@ -1,33 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- AMOLED Theme -->
+    <!-- TerminuX Midnight - Default premium dark theme -->
     <style name="Theme.Termux.AMOLED" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowBackground">@color/black</item>
-        <item name="colorSurface">@color/black</item>
-        <item name="colorSurfaceVariant">#121212</item>
-        <item name="colorPrimary">#BB86FC</item>
-        <item name="colorSecondary">#03DAC6</item>
+        <item name="android:windowBackground">@color/terminux_bg</item>
+        <item name="colorSurface">@color/terminux_bg</item>
+        <item name="colorSurfaceVariant">@color/terminux_surface</item>
+        <item name="colorPrimary">@color/terminux_accent_primary</item>
+        <item name="colorSecondary">@color/terminux_accent_secondary</item>
+        <item name="colorOnSurface">@color/terminux_on_bg</item>
+        <item name="colorOnSurfaceVariant">@color/terminux_on_surface</item>
+        <item name="android:textColorPrimary">@color/terminux_on_bg</item>
+
+        <item name="extraKeysButtonTextColor">@color/terminux_extra_keys_text</item>
+        <item name="extraKeysButtonActiveTextColor">@color/terminux_accent_primary</item>
+        <item name="extraKeysButtonBackgroundColor">@color/terminux_extra_keys_bg</item>
+        <item name="extraKeysButtonActiveBackgroundColor">@color/terminux_extra_keys_active_bg</item>
+        <item name="termuxActivityDrawerBackground">@color/terminux_drawer_bg</item>
+        <item name="termuxActivityDrawerImageTint">@color/terminux_accent_primary</item>
+        <item name="termuxDrawerDividerColor">@color/terminux_drawer_divider</item>
+        <item name="terminuxAccentPrimary">@color/terminux_accent_primary</item>
+        <item name="terminuxAccentGlow">@color/terminux_accent_glow</item>
+        <item name="terminuxCardBackground">@color/terminux_card_bg</item>
+        <item name="terminuxCardStroke">@color/terminux_card_stroke</item>
+        <item name="terminuxSessionActiveColor">@color/terminux_session_active</item>
+        <item name="terminuxSessionIdleColor">@color/terminux_session_idle</item>
     </style>
 
-    <!-- Neon Theme -->
+    <!-- TerminuX Cyberpunk - Vibrant purple/pink neon -->
     <style name="Theme.Termux.Neon" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowBackground">#000000</item>
-        <item name="colorPrimary">#39FF14</item> <!-- Neon Green -->
-        <item name="colorSecondary">#FF00FF</item> <!-- Neon Magenta -->
-        <item name="colorTertiary">#00FFFF</item> <!-- Neon Cyan -->
-        <item name="colorSurface">#0A0A0A</item>
-        <item name="android:textColorPrimary">#39FF14</item>
+        <item name="android:windowBackground">#0A0010</item>
+        <item name="colorPrimary">#E040FB</item>        <!-- Neon Pink -->
+        <item name="colorSecondary">#7C4DFF</item>      <!-- Deep Purple -->
+        <item name="colorTertiary">#FF4081</item>        <!-- Hot Pink -->
+        <item name="colorSurface">#120020</item>
+        <item name="colorSurfaceVariant">#1A0030</item>
+        <item name="colorOnSurface">#F3E5F5</item>
+        <item name="colorOnSurfaceVariant">#CE93D8</item>
+        <item name="android:textColorPrimary">#F3E5F5</item>
+        <item name="android:textColorSecondary">#CE93D8</item>
+
+        <item name="extraKeysButtonTextColor">#F3E5F5</item>
+        <item name="extraKeysButtonActiveTextColor">#E040FB</item>
+        <item name="extraKeysButtonBackgroundColor">#120020</item>
+        <item name="extraKeysButtonActiveBackgroundColor">#2A0045</item>
+        <item name="termuxActivityDrawerBackground">#0A0010</item>
+        <item name="termuxActivityDrawerImageTint">#E040FB</item>
+        <item name="termuxDrawerDividerColor">#2A0045</item>
+        <item name="terminuxAccentPrimary">#E040FB</item>
+        <item name="terminuxAccentGlow">#33E040FB</item>
+        <item name="terminuxCardBackground">#1A0030</item>
+        <item name="terminuxCardStroke">#3D0060</item>
+        <item name="terminuxSessionActiveColor">#E040FB</item>
+        <item name="terminuxSessionIdleColor">#4A3555</item>
     </style>
 
-    <!-- Hacker Theme -->
+    <!-- TerminuX Matrix - Classic green terminal -->
     <style name="Theme.Termux.Hacker" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowBackground">#000000</item>
-        <item name="colorPrimary">#00FF00</item>
-        <item name="colorSurface">#000000</item>
-        <item name="colorOnSurface">#00FF00</item>
-        <item name="android:textColorPrimary">#00FF00</item>
-        <item name="android:textColorSecondary">#008800</item>
+        <item name="android:windowBackground">#000A00</item>
+        <item name="colorPrimary">#00E676</item>         <!-- Matrix Green -->
+        <item name="colorSecondary">#69F0AE</item>       <!-- Light Green -->
+        <item name="colorSurface">#001500</item>
+        <item name="colorSurfaceVariant">#002200</item>
+        <item name="colorOnSurface">#B9F6CA</item>
+        <item name="colorOnSurfaceVariant">#69F0AE</item>
+        <item name="android:textColorPrimary">#00E676</item>
+        <item name="android:textColorSecondary">#1B8A4D</item>
+
+        <item name="extraKeysButtonTextColor">#B9F6CA</item>
+        <item name="extraKeysButtonActiveTextColor">#00E676</item>
+        <item name="extraKeysButtonBackgroundColor">#001500</item>
+        <item name="extraKeysButtonActiveBackgroundColor">#003300</item>
+        <item name="termuxActivityDrawerBackground">#000A00</item>
+        <item name="termuxActivityDrawerImageTint">#00E676</item>
+        <item name="termuxDrawerDividerColor">#003300</item>
+        <item name="terminuxAccentPrimary">#00E676</item>
+        <item name="terminuxAccentGlow">#3300E676</item>
+        <item name="terminuxCardBackground">#001500</item>
+        <item name="terminuxCardStroke">#003300</item>
+        <item name="terminuxSessionActiveColor">#00E676</item>
+        <item name="terminuxSessionIdleColor">#2E5E3E</item>
     </style>
 
 </resources>
